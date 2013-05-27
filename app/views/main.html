@@ -1,9 +1,26 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
+  <h1>EnterpriseDB</h1>
+  <br>
+  <h1>Migration Qualification</h1>
+
+  <div ng-repeat="group in question_groups">
+    <h2>{{$index+1}}. {{group.name}}</h2>
+    <p ng-repeat="line in group.text">{{line}}</p>
+    <table width="100%">
+      <tr ng-repeat="question in group.questions">
+        <td width="3%">{{$index + 1}}.</td>
+        <td width="50%">{{question.q}}</td>
+        <td width="45%"><textarea rows='4' class="span5">{{question.a}}</textarea></td>
+    </table>
+    <br>
+    <p ng-repeat="line in group.post_q_text">{{line}}</p>
+  </div>
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}} is awesome!!!</li>
+      <li ng-repeat="question in questions" ng-hide="question.h">
+        {{$index + 1}}. {{question.q}} + {{question.h}}
+        <ul>
+          <li ng-repeat="subq in question.s" ng-hide="subq.h">{{$index + 1}}. {{subq.q}}</li>
+        </ul>
+      </li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
 </div>
