@@ -1,0 +1,27 @@
+<div class="hero-unit">
+  <h1>EnterpriseDB</h1>
+  <br>
+  <h1>Migration Qualification</h1>
+
+  <div ng-repeat="group in question_groups" ng-show="$index <= 2 || question_groups[2].questions[0].a.length == 0 || (question_groups[2].questions[1].a.length != 0 && $index == 8)">
+    <h2>{{$index+1}}. {{group.name}}</h2>
+    <p ng-repeat="line in group.text">{{line}}</p>
+    <table width="100%">
+      <tr ng-repeat="question in group.questions">
+      <!--ng-hide="$parent.$index > 2 && $rootScope.question_groups[2].questions[0].a.length == 0"-->
+        <td width="3%">{{$index + 1}}.</td>
+        <td width="50%">{{question.q}}</td>
+        <td width="45%"><textarea ng-model="question.a" rows="3" class="span5" placeholder="{{question.ph}}">{{question.a}}</textarea></td>
+    </tr></table>
+    <br>
+    <p ng-repeat="line in group.post_q_text">{{line}}</p>
+  </div>
+  <ul>
+      <li ng-repeat="question in questions" ng-hide="question.h">
+        {{$index + 1}}. {{question.q}} + {{question.h}}
+        <ul>
+          <li ng-repeat="subq in question.s" ng-hide="subq.h">{{$index + 1}}. {{subq.q}}</li>
+        </ul>
+      </li>
+  </ul>
+</div>
