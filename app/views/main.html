@@ -3,7 +3,7 @@
   <br>
   <h1>Migration Qualification</h1>
 
-  <div ng-repeat="group in question_groups" ng-show="$index <= 2 || question_groups[2].questions[0].a.length == 0 || (question_groups[2].questions[1].a.length != 0 && $index == 8)">
+  <div ng-repeat="group in question_groups" ng-show="COTS_filter($index)">
     <h2>{{$index+1}}. {{group.name}}</h2>
     <p ng-repeat="line in group.text">{{line}}</p>
     <table width="100%">

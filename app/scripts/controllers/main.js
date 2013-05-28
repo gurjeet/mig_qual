@@ -3,6 +3,13 @@
 angular.module('MIGQUALApp')
   .controller('MainCtrl', function ($scope) {
 
+    $scope.COTS_filter = function(candidate_section) {
+      return candidate_section <= 2
+              || this.question_groups[2].questions[0].a.length == 0
+              || (this.question_groups[2].questions[1].a.length != 0
+                  && candidate_section == 8);
+    };
+
     $scope.question_groups = [
       /* gn: Group Name, t: text, post_q_text: post-question-text */
       {name:"Introduction"
